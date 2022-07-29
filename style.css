@@ -70,11 +70,15 @@ h4 {
 }
 
 .money.plus {
-  color: #1cc060;
+  color: #0ca74c;
 }
 
 .money.minus {
   color: #e41d07;
+}
+
+.balance {
+  color: #0ca74c;
 }
 
 label {
@@ -108,8 +112,7 @@ input[type='number'] {
 }
 
 .btn:hover {
-  background-color: #fff;
-  color: #3ab7e9;
+  background-color: #1481ac;
   transition: 0.4s;
 }
 
