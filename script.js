@@ -2,6 +2,9 @@ const transactionsUL = document.querySelector('#transactions')
 const incomeDisplay = document.querySelector('#money-plus')
 const expenseDisplay = document.querySelector('#money-minus')
 const balanceDisplay = document.querySelector('#balance')
+const form = document.querySelector('#form')
+const inputTransactionName = document.querySelector('#text')
+const inputTransactionAmount = document.querySelector('#amount')
 
 const dummyTransactions = [
     { id: 1, name: 'Gasolina', amount: -250 },
@@ -44,8 +47,35 @@ const updateBalanceValues = () => {
 }
 
 const init = () => {
+    transactionsUL.innerHTML = ''
     dummyTransactions.forEach(addTransactionIntoDOM)
     updateBalanceValues()
 }
 
 init()
+
+const generateID = () => Math.round(Math.random() * 1000)
+
+form.addEventListener('submit', event => {
+    event.preventDefault()
+
+    const transactionName = inputTransactionName.value.trim()
+    const transactionAmount = inputTransactionAmount.value.trim()
+
+    if (transactionName === '' || transactionAmount === '') {
+        alert('Erro! Verifique os campos e tente novamente.')
+        return
+    }
+
+    const transaction = { 
+        id: generateID(), 
+        name: transactionName, 
+        amount: Number(transactionAmount) 
+    }
+
+    dummyTransactions.push(transaction)
+    init()
+
+    inputTransactionName.value = ''
+    inputTransactionAmount.value = ''
+})
